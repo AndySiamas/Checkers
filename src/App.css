@@ -1,0 +1,16 @@
+html {
+  background-color: whitesmoke;
+}
+
+#root{
+  background-color: whitesmoke;
+}
+
+.App {
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  margin-top: 20%;
+}
