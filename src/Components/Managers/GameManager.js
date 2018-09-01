@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Board from '../InGame/Board.js';
 import MenuButton from '../Menu/MenuButton.js';
+import '../InGame/GameStyle.css';
 
 class GameManager extends Component {
   constructor(props) {
@@ -14,11 +15,15 @@ class GameManager extends Component {
   render() {
     return (
       <div>
-        <Board />
-        <MenuButton text="BACK"
-                    buttonTask={() => { 
-                      this.props.changeGameState('MENU');
-                    }}/>
+        <div className="gameManager">
+          <Board />
+        </div>
+        <div>
+          <MenuButton text="BACK"
+                            buttonTask={() => { 
+                              this.props.changeGameState('MENU');
+                            }}/>
+        </div>
       </div>
     );
   }
