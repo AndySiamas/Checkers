@@ -19,20 +19,25 @@ class Board extends Component {
 
   createBoard(size) {
     let newGrid = [];
-    let colors = ['BLACK', 'WHITE'];
-    let currentColor = colors[0];
+    let currentColor = 'BLACK'
     for (let rows = 0; rows < size; rows++) {
       let rowOfSquares = [];
       for (let cols = 0; cols < size; cols++) {
-        let square = new SquareController(cols, rows, currentColor);
+        let square = new SquareController(cols, rows, currentColor, this);
         rowOfSquares.push(square);
-        currentColor = (currentColor === colors[0]) ? colors[1] : colors[0];
+        currentColor = (currentColor === 'BLACK') ? 'WHITE' : 'BLACK';
       }
       newGrid.push(rowOfSquares);
-      currentColor = (currentColor === colors[0]) ? colors[1] : colors[0];
+      currentColor = (currentColor === 'BLACK') ? 'WHITE' : 'BLACK';
     }
     this.setState({grid: newGrid});
     return newGrid;
+  }
+
+  updateSquare(x, y, updatedSquare) {
+    let newGrid = this.state.grid;
+    newGrid[y][x] = updatedSquare;
+    this.setState({grid: newGrid});
   }
 
   render() {
@@ -41,9 +46,9 @@ class Board extends Component {
           {this.state.grid.map((row) => 
             row.map((square) => 
               (<div> 
-                <div class="box a"> {square.node} <span id="overlay"> HELLO </span>  </div> 
+                <div class="box a"> {square.node} <span id="overlay"> <p></p> </span>  </div> 
               </div>))
-          )}
+            )}
         </div>
     );
   }
